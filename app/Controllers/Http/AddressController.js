@@ -34,19 +34,61 @@ const responseJson = (res, code, data) => {
 };
 
 class AddressController {
-  async showKecamatan({ params, request, response }) {
+  async showKecamatan({ params, response }) {
     try {
       const data = await getData();
       const kecamatan = data.address_kecamatan;
-      const provinsi = data.address_provinsi;
-      const kelurahan = data.address_kelurahan;
-      const kota = data.address_kota;
 
       const selectedKecamatan = filterById(kecamatan, params.id);
       if (selectedKecamatan == undefined)
         return responseJson(response, 200, [{ message: "id not found!!!" }]);
 
       return responseJson(response, 200, [{ nama: selectedKecamatan.nama }]);
+    } catch (error) {
+      return responseJson(response, 400, [{ message: error }]);
+    }
+  }
+
+  async showProvinsi({ params, response }) {
+    try {
+      const data = await getData();
+      const provinsi = data.address_provinsi;
+
+      const selectedProvinsi = filterById(provinsi, params.id);
+      if (selectedProvinsi == undefined)
+        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+
+      return responseJson(response, 200, [{ nama: selectedProvinsi.nama }]);
+    } catch (error) {
+      return responseJson(response, 400, [{ message: error }]);
+    }
+  }
+
+  async showKelurahan({ params, response }) {
+    try {
+      const data = await getData();
+      const kelurahan = data.address_kelurahan;
+
+      const selectedKelurahan = filterById(kelurahan, params.id);
+      if (selectedKelurahan == undefined)
+        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+
+      return responseJson(response, 200, [{ nama: selectedKelurahan.nama }]);
+    } catch (error) {
+      return responseJson(response, 400, [{ message: error }]);
+    }
+  }
+  async showKota({ params, response }) {
+    try {
+      const data = await getData();
+
+      const kota = data.address_kota;
+
+      const selectedKota = filterById(kota, params.id);
+      if (selectedKota == undefined)
+        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+
+      return responseJson(response, 200, [{ nama: selectedKota.nama }]);
     } catch (error) {
       response.json({ status: "error", error });
     }

@@ -16,4 +16,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
-Route.get("/kecamatan/:id", "AddressController.showKecamatan").prefix("api/v1");
+Route.group(() => {
+  Route.get("/kecamatan/:id", "AddressController.showKecamatan");
+  Route.get("/kelurahan/:id", "AddressController.showKelurahan");
+  Route.get("/kota/:id", "AddressController.showKota");
+  Route.get("/provinsi/:id", "AddressController.showProvinsi");
+}).prefix("api/v1");
