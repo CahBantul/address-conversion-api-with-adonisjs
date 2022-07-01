@@ -15,7 +15,7 @@ class AddressController {
 
       return responseJson(response, 200, [provinsi]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
