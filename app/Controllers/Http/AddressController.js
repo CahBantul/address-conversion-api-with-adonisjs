@@ -43,7 +43,7 @@ const responseJson = (res, code, data) => {
 };
 
 class AddressController {
-  async showKecamatan({ params, response }) {
+  async showKecamatan({ params, auth, response }) {
     try {
       await auth.check();
       const data = await getData();
@@ -59,7 +59,7 @@ class AddressController {
     }
   }
 
-  async showProvinsi({ params, response }) {
+  async showProvinsi({ params, auth, response }) {
     try {
       await auth.check();
       const data = await getData();
@@ -75,7 +75,7 @@ class AddressController {
     }
   }
 
-  async showKelurahan({ params, response }) {
+  async showKelurahan({ params, auth, response }) {
     try {
       await auth.check();
       const data = await getData();
@@ -91,7 +91,7 @@ class AddressController {
     }
   }
 
-  async showKota({ params, response }) {
+  async showKota({ params, auth, response }) {
     try {
       await auth.check();
       const data = await getData();
