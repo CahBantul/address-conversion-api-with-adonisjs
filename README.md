@@ -141,9 +141,7 @@ List things you need to use the software and how to install them.
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_please refer to the [Documentation](https://documenter.getpostman.com/view/11537842/UzJERynq)_
+For postman documentation of this api _please refer to the [Documentation](https://documenter.getpostman.com/view/11537842/UzJERynq)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
