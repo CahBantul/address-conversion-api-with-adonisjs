@@ -134,6 +134,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    adonis serve --dev
    ```
+   the app running on http://127.0.0.1:3333
    <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
