@@ -3,7 +3,7 @@ const {
   responseJson,
   getData,
   filterById,
-  filterByKotaId,
+  filterByKeyValue,
 } = require("../../../utils/helpers");
 
 class AddressController {
@@ -41,7 +41,7 @@ class AddressController {
       const data = await getData();
       const kota = data.address_kota;
 
-      const selectedKota = await filterByKotaId(
+      const selectedKota = await filterByKeyValue(
         kota,
         "provinsi_id",
         params.provinsi_id
@@ -81,7 +81,7 @@ class AddressController {
       const data = await getData();
       const kecamatan = data.address_kecamatan;
 
-      const selectedKecamatan = await filterByKotaId(
+      const selectedKecamatan = await filterByKeyValue(
         kecamatan,
         "kota_id",
         params.kota_id
@@ -122,7 +122,7 @@ class AddressController {
       const data = await getData();
       const kelurahan = data.address_kelurahan;
 
-      const selectedKelurahan = await filterByKotaId(
+      const selectedKelurahan = await filterByKeyValue(
         kelurahan,
         "kecamatan_id",
         params.kecamatan_id

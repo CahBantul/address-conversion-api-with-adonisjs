@@ -21,7 +21,7 @@ const filterById = (jsonObject, id) => {
 };
 
 // function filter by kota_id
-const filterByKotaId = (jsonObject, key, value) => {
+const filterByKeyValue = (jsonObject, key, value) => {
   const filteredKecamatan = jsonObject.filter((jsonObject) => {
     return jsonObject[key] == value;
   });
@@ -41,4 +41,4 @@ const responseJson = (res, code, data) => {
   return res.status(code).json({ status: messages[code.toString()], data });
 };
 
-module.exports = { responseJson, getData, filterById, filterByKotaId };
+module.exports = { responseJson, getData, filterById, filterByKeyValue };
