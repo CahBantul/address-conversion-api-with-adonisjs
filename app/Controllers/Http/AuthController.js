@@ -2,11 +2,15 @@
 
 class AuthController {
   async postLoginJwt({ request, auth }) {
-    const { email, password } = request.all();
-    return auth
-      .authenticator("jwt")
-      .withRefreshToken()
-      .attempt(email, password);
+    try {
+      const { email, password } = request.all();
+      return auth
+        .authenticator("jwt")
+        .withRefreshToken()
+        .attempt(email, password);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

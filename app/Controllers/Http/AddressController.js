@@ -34,6 +34,7 @@ const messages = {
   200: "success",
   201: "data saved!",
   400: "not found",
+  401: "unauthorized",
 };
 
 // function response json
@@ -44,6 +45,7 @@ const responseJson = (res, code, data) => {
 class AddressController {
   async showKecamatan({ params, response }) {
     try {
+      await auth.check();
       const data = await getData();
       const kecamatan = data.address_kecamatan;
 
@@ -53,12 +55,13 @@ class AddressController {
 
       return responseJson(response, 200, [{ nama: selectedKecamatan.nama }]);
     } catch (error) {
-      return responseJson(response, 400, [{ message: error }]);
+      return responseJson(response, 401, [{ message: "unauthorized" }]);
     }
   }
 
   async showProvinsi({ params, response }) {
     try {
+      await auth.check();
       const data = await getData();
       const provinsi = data.address_provinsi;
 
@@ -68,12 +71,13 @@ class AddressController {
 
       return responseJson(response, 200, [{ nama: selectedProvinsi.nama }]);
     } catch (error) {
-      return responseJson(response, 400, [{ message: error }]);
+      return responseJson(response, 401, [{ message: "unauthorized" }]);
     }
   }
 
   async showKelurahan({ params, response }) {
     try {
+      await auth.check();
       const data = await getData();
       const kelurahan = data.address_kelurahan;
 
@@ -83,14 +87,14 @@ class AddressController {
 
       return responseJson(response, 200, [{ nama: selectedKelurahan.nama }]);
     } catch (error) {
-      return responseJson(response, 400, [{ message: error }]);
+      return responseJson(response, 401, [{ message: "unauthorized" }]);
     }
   }
 
   async showKota({ params, response }) {
     try {
+      await auth.check();
       const data = await getData();
-
       const kota = data.address_kota;
 
       const selectedKota = filterById(kota, params.id);
@@ -99,12 +103,13 @@ class AddressController {
 
       return responseJson(response, 200, [{ nama: selectedKota.nama }]);
     } catch (error) {
-      response.json({ status: "error", error });
+      return responseJson(response, 401, [{ message: "unauthorized" }]);
     }
   }
 
-  async showAllKecamatanBaseOnKotaId({ params, response }) {
+  async showAllKecamatanBaseOnKotaId({ params, auth, response }) {
     try {
+      await auth.check();
       const data = await getData();
       const kecamatan = data.address_kecamatan;
 
@@ -113,12 +118,12 @@ class AddressController {
         return { nama: kec.nama };
       });
 
-      if (selectedKecamatan == undefined)
+      if (selectedKecamatan == "")
         return responseJson(response, 200, [{ message: "id not found!!!" }]);
 
       return responseJson(response, 200, [mapKecamatan]);
     } catch (error) {
-      return responseJson(response, 400, [{ message: error }]);
+      return responseJson(response, 401, [{ message: "unauthorized" }]);
     }
   }
 }

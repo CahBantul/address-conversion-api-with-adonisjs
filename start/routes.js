@@ -16,8 +16,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
-Route.post("/login", "AuthController.postLoginJwt").prefix("api/v1");
 Route.group(() => {
+  Route.post("/login", "AuthController.postLoginJwt");
   Route.get("/kecamatan/:id", "AddressController.showKecamatan");
   Route.get("/kelurahan/:id", "AddressController.showKelurahan");
   Route.get("/kota/:id", "AddressController.showKota");
@@ -26,6 +26,4 @@ Route.group(() => {
     "/kota-id/:kota_id",
     "AddressController.showAllKecamatanBaseOnKotaId"
   );
-})
-  .middleware(["auth:jwt"])
-  .prefix("api/v1");
+}).prefix("api/v1");
