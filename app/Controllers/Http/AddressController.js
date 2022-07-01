@@ -14,11 +14,19 @@ const getData = async () => {
   return data;
 };
 
-// function filter
+// function filter by id
 const filterById = (jsonObject, id) => {
   return jsonObject.filter((jsonObject) => {
     return jsonObject["id"] == id;
   })[0];
+};
+
+// function filter by kota_id
+const filterByKotaId = (jsonObject, kotaId) => {
+  const filteredKecamatan = jsonObject.filter((jsonObject) => {
+    return jsonObject["kota_id"] == kotaId;
+  });
+  return filteredKecamatan;
 };
 
 // status code
@@ -78,6 +86,7 @@ class AddressController {
       return responseJson(response, 400, [{ message: error }]);
     }
   }
+
   async showKota({ params, response }) {
     try {
       const data = await getData();
@@ -91,6 +100,25 @@ class AddressController {
       return responseJson(response, 200, [{ nama: selectedKota.nama }]);
     } catch (error) {
       response.json({ status: "error", error });
+    }
+  }
+
+  async showAllKecamatanBaseOnKotaId({ params, response }) {
+    try {
+      const data = await getData();
+      const kecamatan = data.address_kecamatan;
+
+      const selectedKecamatan = await filterByKotaId(kecamatan, params.kota_id);
+      const mapKecamatan = selectedKecamatan.map((kec) => {
+        return { nama: kec.nama };
+      });
+
+      if (selectedKecamatan == undefined)
+        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+
+      return responseJson(response, 200, [mapKecamatan]);
+    } catch (error) {
+      return responseJson(response, 400, [{ message: error }]);
     }
   }
 }

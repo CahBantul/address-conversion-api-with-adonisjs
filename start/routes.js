@@ -16,9 +16,16 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
+Route.post("/login", "AuthController.postLoginJwt").prefix("api/v1");
 Route.group(() => {
   Route.get("/kecamatan/:id", "AddressController.showKecamatan");
   Route.get("/kelurahan/:id", "AddressController.showKelurahan");
   Route.get("/kota/:id", "AddressController.showKota");
   Route.get("/provinsi/:id", "AddressController.showProvinsi");
-}).prefix("api/v1");
+  Route.get(
+    "/kota-id/:kota_id",
+    "AddressController.showAllKecamatanBaseOnKotaId"
+  );
+})
+  .middleware(["auth:jwt"])
+  .prefix("api/v1");
