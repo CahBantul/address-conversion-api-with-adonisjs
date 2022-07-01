@@ -27,11 +27,11 @@ class AddressController {
 
       const selectedProvinsi = filterById(provinsi, params.provinsi_id);
       if (selectedProvinsi == undefined)
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [{ nama: selectedProvinsi.nama }]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -51,11 +51,11 @@ class AddressController {
       });
 
       if (selectedKota == "")
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [mapKota]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -67,11 +67,11 @@ class AddressController {
 
       const selectedKota = filterById(kota, params.kota_id);
       if (selectedKota == undefined)
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [{ nama: selectedKota.nama }]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -92,11 +92,11 @@ class AddressController {
       });
 
       if (selectedKecamatan == "")
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [mapKecamatan]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -108,11 +108,11 @@ class AddressController {
 
       const selectedKecamatan = filterById(kecamatan, params.kecamatan_id);
       if (selectedKecamatan == undefined)
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [{ nama: selectedKecamatan.nama }]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -133,11 +133,11 @@ class AddressController {
       });
 
       if (selectedKelurahan == "")
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [mapKelurahan]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 
@@ -149,11 +149,11 @@ class AddressController {
 
       const selectedKelurahan = filterById(kelurahan, params.kelurahan_id);
       if (selectedKelurahan == undefined)
-        return responseJson(response, 200, [{ message: "id not found!!!" }]);
+        return responseJson(response, 404, { message: "id not found!!!" });
 
       return responseJson(response, 200, [{ nama: selectedKelurahan.nama }]);
     } catch (error) {
-      return responseJson(response, 401, [{ message: "unauthorized" }]);
+      return responseJson(response, 401, { message: "unauthorized" });
     }
   }
 }

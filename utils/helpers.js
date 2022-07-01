@@ -34,6 +34,7 @@ const messages = {
   201: "data saved!",
   400: "not found",
   401: "unauthorized",
+  404: "fail",
 };
 
 // function response json
