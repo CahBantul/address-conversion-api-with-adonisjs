@@ -134,7 +134,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    adonis serve --dev
    ```
-   the app running on http://127.0.0.1:3333
+   the app running on [http://127.0.0.1:3333](http://127.0.0.1:3333){:target="\_blank" rel="noopener"}
    <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
@@ -144,22 +144,6 @@ This is an example of how to list things you need to use the software and how to
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -184,7 +168,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -192,9 +176,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@fardannozami](https://twitter.com/fardannozami){:target="\_blank" rel="noopener"}
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/CahBantul/address-conversion-api-with-adonisjs.git](https://github.com/CahBantul/address-conversion-api-with-adonisjs.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -204,14 +188,11 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+- [https://legacy.adonisjs.com/docs/4.1/installation](https://legacy.adonisjs.com/docs/4.1/installation){:target="\_blank" rel="noopener"}
+- [Membuat api sederhana dengan framework adonis 4.1](https://zackstam.medium.com/membuat-base-api-sederhana-dengan-framework-adonis-4-1-a332978bc94){:target="\_blank" rel="noopener"}
+- [Membuat Authentication JWT di AdonisJS](https://zackstam.medium.com/membuat-authentication-jwt-di-adonisjs-cc9f320748d2){:target="\_blank" rel="noopener"}
+- [Adonis Tutorial — JWT Authentication](https://www.techiediaries.com/adonis-jwt-authentication/){:target="\_blank" rel="noopener"}
+- [Adonis Tutorial — CRUD REST API and JWT Authentication](https://www.techiediaries.com/adonis-tutorial-rest-api/){:target="\_blank" rel="noopener"}
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
