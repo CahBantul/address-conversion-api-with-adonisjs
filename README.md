@@ -104,7 +104,30 @@ This is an example of how to list things you need to use the software and how to
 5. seeding data dummy for user
 
    ```sh
-   adonis migration:run
+   adonis seed
+   ```
+
+   after run it, two user adding in the database. For information the users you can see it in the log
+
+   ```js
+   [
+     {
+       id: 1,
+       username: "usersatu",
+       email: "user1@gmail.com",
+       password: "$2a$10$iU9hgCpOMF16tjUH5Xufaubp3fkPInni0NSrgW1i82p7/MTCtFA42",
+       created_at: "2022-07-01 13:26:33",
+       updated_at: "2022-07-01 13:26:33",
+     },
+     {
+       id: 2,
+       username: "userdua",
+       email: "user2@gmail.com",
+       password: "$2a$10$4260QSjXGNlHH5sm4XzWGuU4mGCbEmpuQDkEuNJgUn32pg83nGTYS",
+       created_at: "2022-07-01 13:26:35",
+       updated_at: "2022-07-01 13:26:35",
+     },
+   ];
    ```
 
 6. run the app
