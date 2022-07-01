@@ -78,6 +78,10 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install @adonisjs/cli -g
   ```
+  for make sure you installed it, check with
+  ```sh
+  adonis --version
+  ```
 
 ### Installation
 
