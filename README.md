@@ -193,5 +193,6 @@ Use this space to list resources you find helpful and would like to give credit 
 - [Membuat Authentication JWT di AdonisJS](https://zackstam.medium.com/membuat-authentication-jwt-di-adonisjs-cc9f320748d2)
 - [Adonis Tutorial — JWT Authentication](https://www.techiediaries.com/adonis-jwt-authentication/)
 - [Adonis Tutorial — CRUD REST API and JWT Authentication](https://www.techiediaries.com/adonis-tutorial-rest-api/)
+- [Panduan Singkat Menggunakan Postman](https://kotakode.com/blogs/16235/Panduan-Singkat-Menggunakan-Postman)
 
 <p align="right">(<a href="#top">back to top</a>)</p>

@@ -21,9 +21,9 @@ const filterById = (jsonObject, id) => {
 };
 
 // function filter by kota_id
-const filterByKotaId = (jsonObject, kotaId) => {
+const filterByKotaId = (jsonObject, key, value) => {
   const filteredKecamatan = jsonObject.filter((jsonObject) => {
-    return jsonObject["kota_id"] == kotaId;
+    return jsonObject[key] == value;
   });
   return filteredKecamatan;
 };

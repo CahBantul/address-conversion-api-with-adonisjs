@@ -18,12 +18,21 @@ const Route = use("Route");
 
 Route.group(() => {
   Route.post("/login", "AuthController.postLoginJwt");
-  Route.get("/kecamatan/:id", "AddressController.showKecamatan");
-  Route.get("/kelurahan/:id", "AddressController.showKelurahan");
-  Route.get("/kota/:id", "AddressController.showKota");
-  Route.get("/provinsi/:id", "AddressController.showProvinsi");
+  Route.get("/provinsi/:provinsi_id", "AddressController.showProvinsi");
+  Route.get("/provinsi", "AddressController.showAllProvinsi");
   Route.get(
-    "/kota-id/:kota_id",
+    "/all-kota/:provinsi_id",
+    "AddressController.showAllKotaBaseOnProvinsiId"
+  );
+  Route.get("/kota/:kota_id", "AddressController.showKota");
+  Route.get(
+    "/all-kecamatan/:kota_id",
     "AddressController.showAllKecamatanBaseOnKotaId"
   );
+  Route.get("/kecamatan/:kecamatan_id", "AddressController.showKecamatan");
+  Route.get(
+    "/all-kelurahan/:kecamatan_id",
+    "AddressController.showAllKelurahanBaseOnKecamatanId"
+  );
+  Route.get("/kelurahan/:kelurahan_id", "AddressController.showKelurahan");
 }).prefix("api/v1");
