@@ -186,7 +186,7 @@ Project Link: [https://github.com/CahBantul/address-conversion-api-with-adonisjs
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+List resources helpful and I would like to give credit to.
 
 - [https://legacy.adonisjs.com/docs/4.1/installation](https://legacy.adonisjs.com/docs/4.1/installation)
 - [Membuat api sederhana dengan framework adonis 4.1](https://zackstam.medium.com/membuat-base-api-sederhana-dengan-framework-adonis-4-1-a332978bc94)
