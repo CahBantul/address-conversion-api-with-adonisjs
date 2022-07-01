@@ -135,7 +135,6 @@ This is an example of how to list things you need to use the software and how to
    adonis serve --dev
    ```
    the app running on [http://127.0.0.1:3333](http://127.0.0.1:3333)
-   <p align="right">(<a href="http://127.0.0.1:3333" target="_blank">back to top</a>)</p>
    <p align="right">(<a href="#top" >back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
@@ -196,48 +195,3 @@ Use this space to list resources you find helpful and would like to give credit 
 - [Adonis Tutorial — CRUD REST API and JWT Authentication](https://www.techiediaries.com/adonis-tutorial-rest-api/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-
-# Adonis API application
-
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick --api-only
-```
-
-or manually clone the repo and then run `npm install`.
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
