@@ -1,0 +1,1861 @@
+{
+	"info": {
+		"_postman_id": "a09b7c89-3cbc-40b8-b9d5-f7cefd9d5e4d",
+		"name": "Address Conversion API",
+		"description": "simple api for address conversion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11537842"
+	},
+	"item": [
+		{
+			"name": "Login With Correct Email and Pass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('type');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('token');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('refreshToken');\r",
+							"\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"user1@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base url}}/api/v1/login",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login With Correct Email and Invalid Pass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah array\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson[0]).to.haveOwnProperty('field');\r",
+							"    pm.expect(responseJson[0]).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson[0].field).to.equals('password');\r",
+							"    pm.expect(responseJson[0].message).to.equals('Invalid user password');\r",
+							"    pm.expect(responseJson).to.be.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"user1@gmail.com\",\r\n    \"password\": \"xxxxxx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base url}}/api/v1/login",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login With Invalid Email and  Pass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah array\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson[0]).to.haveOwnProperty('field');\r",
+							"    pm.expect(responseJson[0]).to.haveOwnProperty('message');\r",
+							"\r",
+							"    pm.expect(responseJson[0].field).to.equals('email');\r",
+							"    pm.expect(responseJson[0].message).to.equals('Cannot find user with provided email');\r",
+							"    pm.expect(responseJson).to.be.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"xxxx@gmail.com\",\r\n    \"password\": \"xxxxxx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base url}}/api/v1/login",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Provinsi With Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('success');\r",
+							"    pm.expect(responseJson.data).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/provinsi",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"provinsi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Provinsi Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/provinsi",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"provinsi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Provinsi With Correct Id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/provinsi/{{provinsi_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"provinsi",
+						"{{provinsi_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Provinsi With Correct Id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/provinsi/{{provinsi_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"provinsi",
+						"{{provinsi_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Provinsi With Invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/provinsi/xxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"provinsi",
+						"xxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kota With Correct Provinsi_id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('success');\r",
+							"    pm.expect(responseJson.data).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kota/{{provinsi_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kota",
+						"{{provinsi_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kota With Correct Provinsi_id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kota/{{provinsi_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kota",
+						"{{provinsi_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kota With Invalid Provinsi_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kota/xxxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kota",
+						"xxxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kota With Correct Id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kota/{{kota_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kota",
+						"{{kota_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kota With Correct Id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kota/{{kota_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kota",
+						"{{kota_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kota With Invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kota/xxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kota",
+						"xxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kecamatan With Correct Kota_id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kecamatan/{{kota_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kecamatan",
+						"{{kota_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kecamatan With Correct Kota_id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kecamatan/{{kota_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kecamatan",
+						"{{kota_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kecamatan With Invalid Kota_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kecamatan/xxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kecamatan",
+						"xxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kecamatan With Correct Id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kecamatan/{{kecamatan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kecamatan",
+						"{{kecamatan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kecamatan With Correct Id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kecamatan/{{kecamatan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kecamatan",
+						"{{kecamatan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kecamatan With Invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kecamatan/xxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kecamatan",
+						"xxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kelurahan With Correct Kecamatan_id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kelurahan/{{kecamatan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kelurahan",
+						"{{kecamatan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kelurahan With Correct Kecamatan_id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kelurahan/{{kecamatan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kelurahan",
+						"{{kecamatan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kelurahan With Invalid Kecamatan_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/all-kelurahan/xxxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"all-kelurahan",
+						"xxxxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kelurahan With Correct Id and Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 200\r",
+							"pm.test(\"response status code should equals 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan jumlah data minimal 1\r",
+							"pm.test(\"response data should contain at least one item\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.data).to.be.an(\"array\");\r",
+							"  pm.expect(responseJson.data).lengthOf.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kelurahan/{{kelurahan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kelurahan",
+						"{{kelurahan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kelurahan With Correct Id and Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 401\r",
+							"pm.test(\"response status code should equals 401\", () => {\r",
+							"  pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('unauthorized');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('unauthorized');\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kelurahan/{{kelurahan_id}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kelurahan",
+						"{{kelurahan_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kelurahan With Invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Memastikan bahwa respons memiliki kode status 404\r",
+							"pm.test(\"response status code should equals 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons berupa data JSON\r",
+							"pm.test(\"response Content-Type header should equals application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.equals(\r",
+							"    \"application/json; charset=utf-8\"\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa respons merupakan sebuah object\r",
+							"pm.test(\"response body should be an object\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"// Memastikan bahwa data pada respons berisi array dengan property dan value yang benar\r",
+							"pm.test(\"response body should have correct property and value\", () => {\r",
+							"     const responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('status');\r",
+							"    pm.expect(responseJson).to.haveOwnProperty('data');\r",
+							"\r",
+							"    pm.expect(responseJson.status).to.equals('fail');\r",
+							"    pm.expect(responseJson.data).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body data should contain message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('message');\r",
+							"    pm.expect(data.message).to.equals('id not found!!!');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/api/v1/kelurahan/xxxx",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"kelurahan",
+						"xxxx"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
