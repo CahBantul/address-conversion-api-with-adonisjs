@@ -132,7 +132,7 @@ This is an example of how to list things you need to use the software and how to
 
 6. run the app
    ```sh
-   adonis serve --watch
+   adonis serve --dev
    ```
    <p align="right">(<a href="#top">back to top</a>)</p>
 
