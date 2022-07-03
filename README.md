@@ -94,6 +94,10 @@ List things you need to use the software and how to install them.
    npm install
    ```
 3. rename file `.env.sample` become `.env`. I use the default configuration
+   note : if the APP_KEY doesn't exit, you can use command below
+   ```sh
+   adonis key:generate
+   ```
 
 4. migrating database
 
